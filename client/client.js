@@ -12,6 +12,7 @@ function toggleSignIn(auth) {
         }
     }
 }
+
 function handleSignUp(auth) {
     return function() {
         console.log("handle SignUp");
@@ -43,6 +44,15 @@ function handleAuthStateChange(auth) {
            document.getElementById('quickstart-sign-in').textContent = 'Signed out';
            document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, ' ');
 
+           // provider specific data
+           let ps = document.getElementById('quickstart-account-details-provider-specific')
+           ps.textContent = '';
+           user.providerData.forEach(function(profile) {
+               if (profile) {
+                   ps.textContent = ps.textContent + (JSON.stringify(profile, null, ' '));
+               }
+           })
+
            if (!user.emailVerified) {
                document.getElementById('quickstart-verify-email').disabled = false;
            }
@@ -59,10 +69,27 @@ function handleAuthStateChange(auth) {
 
 function handleSendEmailVerification(auth) {
     return function() {
-        console.log(JSON.stringify(auth.currentUser, null, ' '));
-
         auth.currentUser.sendEmailVerification().then(function() {
             alert(`email verification sent to ${auth.currentUser.email}`)
+        })
+    }
+}
+
+function handleUpdateEmail(auth) {
+    return function(){
+        let user = auth.currentUser;
+        let orgEmail = user.email
+        let newEmail = document.getElementById('email').value;
+
+        if (newEmail.length < 3) {
+            alert("email required !");
+            return;
+        }
+
+        user.updateEmail(newEmail).then(function() {
+            console.log(`update email from ${orgEmail} to ${newEmail}`)
+        }).catch(function(error){
+            console.log(`failed auth.currentUser.updateEmail`, error);
         })
     }
 }
@@ -88,6 +115,7 @@ function init() {
     document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
     document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp(auth), false);
     document.getElementById('quickstart-verify-email').addEventListener('click', handleSendEmailVerification(auth), false);
+    document.getElementById('quickstart-update-email').addEventListener('click', handleUpdateEmail(auth), false);
 
 }
 
