@@ -1,14 +1,37 @@
 <!doctype html>
 <html>
 <head>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+
+    <!-- Firebase service named 'auth' already registered (app/duplicate-service)-->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script> -->
+
     <title>Example</title>
     <link rel="icon" type="image/png" href="/static/images/isomorphic_go_icon.png">
     <script defer src="/js/client.js"></script>
+
 </head>
-
 <body>
+    <div>
+        <input style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
+        &nbsp;&nbsp;&nbsp;
+        <input style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
+    </div>
 
-<h1>OK</h1>
+    <div>
+        <button  disabled id="quickstart-sign-in" name="signin">Sign In</button>
+        &nbsp;&nbsp;&nbsp;
+        <button  id="quickstart-sign-up" name="signup">Sign Up</button>
+        &nbsp;&nbsp;&nbsp;
+        <button disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
+
+    </div>
+
+    <div class="quickstart-user-details-container">
+        Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+        <div>Firebase auth <code>currentUser</code> object value:</div>
+        <pre><code id="quickstart-account-details">null</code></pre>
+    </div>
 
 </body>
 </html>
