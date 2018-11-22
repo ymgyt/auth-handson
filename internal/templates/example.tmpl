@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <!-- Firebase service named 'auth' already registered (app/duplicate-service)-->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script> -->
 
@@ -25,8 +25,11 @@
         &nbsp;&nbsp;&nbsp;
         <button disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
         &nbsp;&nbsp;&nbsp;
-        <button id="quickstart-update-email" name="update-email">Update Email Verification</button>
-
+        <button id="quickstart-update-email" name="update-email">Update Email</button>
+    </div>
+    <div>
+        <button id="google-sign-in">Google Sign in</button>
+        <button id="facebook-sign-in">Facebook Sign in</button>
     </div>
 
     <div class="quickstart-user-details-container">
@@ -36,7 +39,27 @@
 
         <div>Provider Specific data <code>currentUser</code> object value:</div>
         <pre><code id="quickstart-account-details-provider-specific">null</code></pre>
+    </div>
 
+    <div>
+        <h3>Firestore</h3>
+        <form>
+            <fieldset style="min-height: 270px">
+                <div id="dbContainer"></div>
+            </fieldset>
+
+            <fieldset>
+                <label>Key:</label>
+                <input id="dbKey" type="text" value="">
+                <label>Value:</label>
+                <input id="dbValue" type="text" value="">
+            </fieldset>
+
+            <fieldset>
+                <button id="dbSave" type="button">Save</button>
+                <button id="dbClear" type="button">Save</button>
+            </fieldset>
+        </form>
     </div>
 
 </body>
