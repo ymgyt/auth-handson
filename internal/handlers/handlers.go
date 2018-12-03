@@ -5,20 +5,24 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/ymgyt/auth-handson/internal/server"
+	"github.com/ymgyt/auth-handson/internal/app"
 )
 
 // Handlers -
 type Handlers struct {
 	Example *Example
 	Static  *Static
+	Auth    *Auth
+	Auth0 *Auth0
 }
 
 // New -
-func New(env *server.Env) *Handlers {
+func New(env *app.Env) *Handlers {
 	return &Handlers{
 		Example: &Example{Env: env},
 		Static:  &Static{Env: env},
+		Auth:    &Auth{Env: env, auth: env.Auth},
+		Auth0: &Auth0{Env: env},
 	}
 }
 

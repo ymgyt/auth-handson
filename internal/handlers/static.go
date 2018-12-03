@@ -2,14 +2,15 @@ package handlers
 
 import (
 	"net/http"
+	"path"
 
 	"github.com/gin-gonic/gin"
-	"github.com/ymgyt/auth-handson/internal/server"
+	"github.com/ymgyt/auth-handson/internal/app"
 )
 
 // Static -
 type Static struct {
-	*server.Env
+	*app.Env
 	base
 
 	fs http.Handler
@@ -17,7 +18,8 @@ type Static struct {
 
 // ClientJS -
 func (s *Static) ClientJS(c *gin.Context) {
-	http.ServeFile(c.Writer, c.Request, s.AppRoot+"/client/client.js")
+	name := path.Base(c.Request.URL.Path)
+	http.ServeFile(c.Writer, c.Request, s.AppRoot+"/client/"+name)
 }
 
 // Static -

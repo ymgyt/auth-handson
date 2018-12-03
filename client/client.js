@@ -176,7 +176,7 @@ function db_save(db) {
             return;
         }
 
-        console.log(`db_set ${key}:${value}`)
+        console.log(`db_set /users/${uid} ${key}:${value}`)
 
         db.collection("users").doc(uid).set({
             [key]: value,
@@ -197,6 +197,29 @@ function db_save(db) {
     }
 }
 
+function db_clear(db) {
+    return () => {
+        if (!currentUser) {
+            alert("sign in required !");
+            return;
+        }
+        let uid = currentUser.uid;
+        if (!uid) {
+            console.log("db_save I NEED uid");
+            return;
+        }
+
+        db.collection("users").doc(uid).delete()
+        .then(() => {
+            console.log("db_clear success");
+            db_display(db);
+        })
+        .catch(error => {
+            console.log("db_clear fail", error);
+        })
+    }
+}
+
 function db_display(db) {
     let container = document.getElementById('dbContainer')
 
@@ -211,10 +234,15 @@ function db_display(db) {
         console.log("db_display: user not signin");
         return;
     }
-    let docSnapshot = db.collection("/users").doc(uid).get()
+
+    db.collection("/users").doc(uid).get()
     .then(docSnapshot => {
         let data = docSnapshot.data();
+        if (typeof data === "undefined") {
+            return;
+        }
         let div = document.createElement("div");
+        console.log(`db_display uid: ${uid} data: ${data}`);
         div.innerHTML = `<p>${JSON.stringify(data, null, ' ')}</p>`;
         container.appendChild(div);
     })
@@ -233,6 +261,7 @@ function firestore(auth) {
     });
 
     document.getElementById('dbSave').addEventListener('click', db_save(db), false);
+    document.getElementById('dbClear').addEventListener('click', db_clear(db), false);
 
     auth.onAuthStateChanged(user => {
         db_display(db);

@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Auth Hands On</title>
+  <link rel="icon" type="image/png" href="/static/images/isomorphic_go_icon.png">
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  <script type="module" src="/js/server_side_auth.js"></script>
+  <style>
+    * {
+      margin: 0;
+    }
+    .body {
+      font-family: "Hiragino Kaku Gothic PronN", Meiryo, sans-serif;
+      box-sizing:border-box;
+    }
+
+    .main {
+      width: 960px;
+      margin: 0 auto;
+      padding: 10px;
+      background-color: #ccc;
+    }
+
+    .title {
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .auth {
+      width: 100%;
+      background-color: #ccc;
+    }
+
+    .auth input {
+      display: block;
+      margin: 20px 0;
+      width: 20%;
+    }
+
+    .auth .btn-group {
+      width: 20%;
+      display: inline-block;
+    }
+
+    .auth .btn-group::after {
+      content: '';
+      clear: both;
+    }
+
+    .auth .btn-group .btn {
+      width: 40%;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 1.2rem;
+      display: block;
+      background-color: #999;
+      border-radius: 5px;
+      transition: opacity 0.25s;
+    }
+
+    .auth .btn-group .btn:nth-of-type(even) {
+      float: right;
+    }
+
+    .auth .btn-group .btn:nth-of-type(odd) {
+      float: left;
+    }
+
+    .auth .btn-group .btn:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+
+    .debug {
+      width: 100%;
+      margin-top: 20px;
+      min-height: 250px;
+      background-color: #ddd;
+    }
+
+    .debug pre {
+      white-space: pre-wrap;
+      word-break: keep-word;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="main">
+    <h1 class="title">Auth Hands On</h1>
+    <form class="auth">
+      <input type="email" id="email" placeholder="email" value="">
+      <input type="text" id="password" placeholder="password" value="secret">
+      <div class="btn-group">
+        <div id="sign-in" class="btn">sign in</div>
+        <div id="sign-up" class="btn">sign up</div>
+      </div>
+    </form>
+    <div class="debug">
+      <pre><code id="debug"></code></pre>
+    </div>
+  </main>
+</body>
+
+</html>

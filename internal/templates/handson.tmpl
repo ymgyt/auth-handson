@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Auth Hands On</title>
+  <link rel="icon" type="image/png" href="/static/images/isomorphic_go_icon.png">
+  <link rel="stylesheet" href="/static/css/reset.css">
+  <link rel="stylesheet" href="/static/css/handson.css">
+  <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  <script type="module" src="/js/handson.js"></script>
+</head>
+
+<body>
+  <div class="container clearfix">
+    <h1 class="title">Auth Hands On</h1>
+
+    <div class="input">
+      <div class="user-input-group clearfix">
+        <input type="email" class="user-input" id="input-email" placeholder="email" value="yuta.yamaguchi+ho1@howtelevision.jp">
+        <input type="text" class="user-input" id="input-password" placeholder="password" value="gopher">
+        <div class="oauth-flow-handle-radio">
+          <input type="radio" name="oauth-flow-handle" value="popup" id="oauth-flow-handle-popup" checked>
+          <label for="oauth-flow-handle-popup">popup</label>
+          <input type="radio" name="oauth-flow-handle" value="redirect" id="oauth-flow-handle-redirect">
+          <label for="oauth-flow-handle-popup">redirect</label>
+        </div>
+        <button class="btn" id="sign-out">Sign Out</button>
+      </div>
+
+      <div class="user-action">
+        <div class="action-group clearfix">
+          <div class="title">Custom</div>
+          <button class="btn" id="custom-sign-up">Sign Up</button>
+          <button class="btn" id="custom-sign-in">Sign In</button>
+        </div>
+        <div class="action-group clearfix">
+          <div class="title">Firebase</div>
+          <button class="btn" id="firebase-sign-up">Sign Up</button>
+          <button class="btn" id="firebase-sign-in">Sign In</button>
+          <button class="btn" id="firebase-google-sign-in">Google Sign In</button>
+          <button class="btn" id="firebase-facebook-sign-in">Facebook Sign In</button>
+        </div>
+        <div class="action-group clearfix">
+          <div class="title">Auth0</div>
+          <a class="btn" id="auth0-sign-up">Sign Up</a>
+          <a class="btn" id="auth0-sign-in">Sign In</a>
+          <a class="btn" id="auth0-cs-sign-in">Client Side Sign In</a>
+          <a class="btn" id="auth0-protected-resource">Resource</a>
+          <button class="btn" id="auth0-sign-out">Sign Out</button>
+        </div>
+      </div>
+    </div>
+    <div class="output">
+      <div class="debug-group">
+        <div class="title">Msg</div>
+        <pre class="content"><code id="debug-message"></code></pre>
+      </div>
+
+      <div class="debug-group">
+        <div class="title">Data</div>
+        <pre class="content"><code id="debug-data"></code></pre>
+      </div>
+
+      <div class="debug-group">
+        <div class="title">JWT</div>
+        <pre class="content"><code id="debug-jwt"></code></pre>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

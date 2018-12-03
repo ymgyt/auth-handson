@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+body {
+        font-family: "Hiragino Kaku Gothic PronN", Meiryo, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.container {
+    margin:0 auto;
+    padding: 1%;
+    width: 1200px;
+    background-color: #ddd;
+}
+
+.title {
+    width: 30%;
+    margin: 0 auto 30px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.input {
+    width: 49%;
+    padding: 20px;
+    background-color:#aaa;
+    float: left;
+}
+
+.input .user-input-group {
+    width: 100%;
+}
+
+.input .user-input {
+    width: 300px;
+    height: 40px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.input .btn {
+    width: 40%;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-right: 30px;
+    display: block;
+    float: left;
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 1.5;
+    text-decoration: none;
+    color: #222;
+    border-radius: 5px;
+    transition: opacity 0.2s;
+    background-color:#fff;
+}
+
+.input .btn:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.input .oauth-flow-handle-radio {
+    margin-bottom: 20px;
+}
+
+.input .oauth-flow-handle-radio label {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.user-action {
+    width: 100%;
+}
+
+.action-group{
+    margin-bottom: 30px;
+}
+
+.action-group .title {
+    text-align: left;
+}
+
+.output {
+    width: 49%;
+    padding: 20px;
+    background-color:#aaa;
+    float: right;
+}
+
+.output .debug-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.output .debug-group .title {
+    margin: 0 auto 10px 0;
+    text-align: left;
+}
+
+.output .debug-group .content {
+    display: block;
+    width: 100%;
+    min-height: 150px;
+    background-color: #ddd;
+}
+
+.output .debug-group pre {
+    white-space: pre-wrap;
+    word-break: keep-word;
+    overflow: auto;
+}
